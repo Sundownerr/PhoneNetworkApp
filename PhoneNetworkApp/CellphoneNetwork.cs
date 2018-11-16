@@ -23,9 +23,26 @@ namespace PhoneNetworkApp
             personList = new List<Person>();
         }
 
-        public void SearchBy(SearchType searchType)
+        public void SearchBy(SearchType searchType, string parameter)
         {
-            
+            Console.WriteLine("\nРезультаты поиска: ");
+            if (searchType == SearchType.ByName)
+                for (int i = 0; i < personList.Count; i++)
+                    if (personList[i].FullName.Contains(parameter))
+                    {
+                        personList[i].DisplayInfo();
+                        return;
+                    }
+
+            if (searchType == SearchType.ByPhoneNumber)
+                for (int i = 0; i < personList.Count; i++)
+                    if (personList[i].PhoneNumber.Contains(parameter))
+                    {
+                        personList[i].DisplayInfo();
+                        return;
+                    }
+
+            Console.WriteLine("Абоненты с такими параметрами не найдены.");
         }
     }
 }

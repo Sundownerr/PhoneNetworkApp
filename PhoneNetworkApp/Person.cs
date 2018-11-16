@@ -35,7 +35,6 @@ namespace PhoneNetworkApp
         public void DisplayInfo()
         {
             Console.WriteLine($"{fullName}, {phoneNumber}, {adress}, {rate.Name}");
-        }
-        
+        }     
     }
 }

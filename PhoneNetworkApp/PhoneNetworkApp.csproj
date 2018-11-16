@@ -43,8 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CellphoneNetwork.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rate.cs" />
+    <Compile Include="RateSimple.cs" />
+    <Compile Include="RateSuper100.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

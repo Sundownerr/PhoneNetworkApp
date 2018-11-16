@@ -21,15 +21,16 @@ namespace PhoneNetworkApp
 
         public RateSuper100(int dailyCost) : base(dailyCost)
         {
-            discount = 50;           
+            discount = 50;
             this.dailyCost -= (int)(dailyCost / 100 * discount);
-            name = $"Тариф 'Супер 100' со скидкой 50%";
+            name = $"Тариф 'Супер 100' со скидкой {discount}%";
         }
 
         public override int CalculateMonthlyCost()
         {
+            
             base.CalculateMonthlyCost();
-            return discount > 0 ? (int)(dailyCost * 30 - dailyCost * 30 / 100 * (discount)) : dailyCost * 30;
+            return discount > 0 ? (int)(dailyCost * 30 - dailyCost * 30 / 100 * discount) : dailyCost * 30;
         }
     }
 }

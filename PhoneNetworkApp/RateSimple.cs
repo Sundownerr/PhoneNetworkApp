@@ -21,8 +21,8 @@ namespace PhoneNetworkApp
 
         public RateSimple(int dailyCost, float discount) : base(dailyCost)
         {
-            this.discount = discount;       
-            dailyCost -= (int)(dailyCost / 100 * (discount));
+            this.discount = discount;
+            this.dailyCost -= (int)(dailyCost / 100 * (discount));
             name = $"Тариф 'Простой' со скидкой {discount}%";        
         }
 

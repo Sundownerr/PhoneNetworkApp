@@ -34,7 +34,15 @@ namespace PhoneNetworkApp
 
         public void DisplayInfo()
         {
-            Console.WriteLine($"{fullName}, {phoneNumber}, {adress}, {rate.Name}");
-        }     
+            Console.WriteLine($"{fullName}, {phoneNumber}, {adress}, {rate.DisplayInfo(false)}");
+        }
+        
+        public void DisplayInfo(bool showRate)
+        {
+            if(showRate)
+                Console.WriteLine($"{fullName}, {phoneNumber}, {adress}, {rate.DisplayInfo(false)}");
+            else
+                Console.WriteLine($"{fullName}, {phoneNumber}, {adress}");
+        }
     }
 }

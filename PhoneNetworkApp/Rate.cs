@@ -31,7 +31,15 @@ namespace PhoneNetworkApp
 
         public void DisplayInfo()
         {
-            Console.WriteLine($"{Name}, {CalculateMonthlyCost()}р. в месяц");
+            Console.WriteLine($"{Name}, {dailyCost}р. в день, {CalculateMonthlyCost()}р. в месяц");
+        }
+
+        public string DisplayInfo(bool showFull)
+        {
+            if(showFull)
+                return $"{Name}, {CalculateMonthlyCost()}р. в месяц";
+            else
+                return $"{Name}";
         }
     }
 }

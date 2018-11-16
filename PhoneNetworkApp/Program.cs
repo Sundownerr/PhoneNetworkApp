@@ -23,7 +23,7 @@ namespace PhoneNetworkApp
                 new RateSimple(),
                 new RateSuper100(),
                 new RateSimple(20, 20),
-                new RateSuper100(51)
+                new RateSuper100(30)
             };
 
             var file = File.ReadAllLines("spisok.txt", Encoding.Default);

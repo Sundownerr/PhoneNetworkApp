@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace PhoneNetworkApp
 {
+    // Класс абонента, состоит из полного имени,
+    // номера телефона и адреса
     public class Person
     {
         private string fullName, phoneNumber, adress;
@@ -16,6 +18,7 @@ namespace PhoneNetworkApp
         public string Adress { get => adress; set => adress = value; }
         public Rate Rate { get => rate; set => rate = value; }
 
+        // Конструктор без параметров
         public Person()
         {
             fullName = "SampleName";          
@@ -24,6 +27,7 @@ namespace PhoneNetworkApp
             rate = new RateSimple();
         }
 
+        // Конструктор с параметрами
         public Person(string fullName, string phoneNumber, string adress, Rate rate)
         {
             this.fullName = fullName;          
@@ -32,11 +36,13 @@ namespace PhoneNetworkApp
             this.rate = rate;
         }
 
+        // Метод вывода информации об абоненте в консоль
         public void DisplayInfo()
         {
             Console.WriteLine($"{fullName}, {phoneNumber}, {adress}, {rate.DisplayInfo(false)}");
         }
-        
+
+        // Перегруженный метод вывода информации об абоненте в консоль
         public void DisplayInfo(bool showRate)
         {
             if(showRate)

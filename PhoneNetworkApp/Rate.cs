@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace PhoneNetworkApp
 {
+    // Родительский класс тарифов, состоит из названия и 
+    // стоимости за день
     public abstract class Rate
     {
         protected int dailyCost;
@@ -24,16 +26,20 @@ namespace PhoneNetworkApp
             this.dailyCost = dailyCost;
         }
 
+        // Метод подсчета стоимости за месяц
         public virtual int CalculateMonthlyCost()
         {
             return dailyCost * 30;
         }
 
+        // Метод вывода информации в консоль
         public void DisplayInfo()
         {
             Console.WriteLine($"{Name}, {dailyCost}р. в день, {CalculateMonthlyCost()}р. в месяц");
         }
 
+        // Перегруженный метод вывода, который возвращает строку
+        // вместо вывода в консоль
         public string DisplayInfo(bool showFull)
         {
             if(showFull)

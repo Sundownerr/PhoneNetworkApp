@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace PhoneNetworkApp
 {
+    // Перечисление для метода поиска (для удобства)
     public enum SearchType
     {
         ByName,
         ByPhoneNumber
     }
 
+    // Класс телефонной сети, состоит из списка абонентов
     public class CellphoneNetwork
     {
         private List<Person> personList;
@@ -22,7 +24,8 @@ namespace PhoneNetworkApp
         {
             personList = new List<Person>();
         }
-
+        
+        // Метод поиска абонентов по критерию (имя или телефон)
         public void SearchBy(SearchType searchType, string parameter)
         {
             Console.WriteLine("\nРезультаты поиска: ");

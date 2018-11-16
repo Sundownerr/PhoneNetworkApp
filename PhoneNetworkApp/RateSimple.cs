@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace PhoneNetworkApp
 {
+    // Дочерний класс тарифа - тариф "Простой",
+    // дополнительно содержит в себе значение скидки
     public class RateSimple : Rate
     {
         private float discount;
@@ -19,6 +21,7 @@ namespace PhoneNetworkApp
             name = $"Тариф 'Простой' без скидки";
         }
 
+        // Наследование конструктора
         public RateSimple(int dailyCost, float discount) : base(dailyCost)
         {
             this.discount = discount;
@@ -26,6 +29,7 @@ namespace PhoneNetworkApp
             name = $"Тариф 'Простой' со скидкой {discount}%";        
         }
 
+        // Переопределенный метод подсчета стоимости за месяц
         public override int CalculateMonthlyCost()
         {
             base.CalculateMonthlyCost();

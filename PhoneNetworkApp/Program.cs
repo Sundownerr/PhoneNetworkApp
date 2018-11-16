@@ -18,6 +18,8 @@ namespace PhoneNetworkApp
             var random = new Random();
             var result = 0;
             action = null;
+
+            // Список со случайными тарифами
             var rateList = new Rate[4]
             {
                 new RateSimple(),
@@ -26,8 +28,10 @@ namespace PhoneNetworkApp
                 new RateSuper100(30)
             };
 
+            // Считывание информации из файла
             var file = File.ReadAllLines("spisok.txt", Encoding.Default);
             
+            // Разделение считанной информации на имя, телефон, адрес
             for (int i = 0; i < file.Length; i++)
             {
                 var personData = file[i].Split(new char[] { ',' });             
@@ -41,6 +45,7 @@ namespace PhoneNetworkApp
            
             CheckInput();     
           
+            // Локальный метод для получения ввода пользователя программы
             void CheckInput()
             {              
                 while (!int.TryParse(input, out result) || result < 1 || result > 5)
@@ -50,6 +55,7 @@ namespace PhoneNetworkApp
                 }
                 input = string.Empty;
 
+                // Выбор метода для делегата, основываясь на вводимой информации
                 action = 
                     result == 1 ? ShowPersonList :
                     result == 2 ? ShowRateList :
@@ -59,12 +65,14 @@ namespace PhoneNetworkApp
                 action?.Invoke();
                 action = null;            
             }
-            
+
+            // Локальный метод для выхода из программы
             void Exit()
             {
                 Environment.Exit(0);
             }
 
+            // Локальный метод для отображения всех абонентов
             void ShowPersonList()
             {
                 for (int i = 0; i < network.PersonList.Count; i++)
@@ -72,6 +80,7 @@ namespace PhoneNetworkApp
                 CheckInput();
             }
 
+            // Локальный метод для отображения всех тарифов
             void ShowRateList()
             {
                 for (int i = 0; i < rateList.Length; i++)
@@ -79,6 +88,7 @@ namespace PhoneNetworkApp
                 CheckInput();
             }
 
+            // Локальный метод для поиска абонентов по имени
             void SearchByName()
             {
                 Console.WriteLine("Введите часть имени или полное имя: ");
@@ -86,6 +96,7 @@ namespace PhoneNetworkApp
                 CheckInput();
             }
 
+            // Локальный метод для поиска абонентов по номеру телефона
             void SearchByPhoneNumber()
             {           
                 Console.WriteLine("Введите часть номера или полный номер: ");
@@ -93,6 +104,7 @@ namespace PhoneNetworkApp
                 CheckInput();
             }
 
+            // Локальный метод для отображения меню
             void ShowMenu()
             {         
                 Console.WriteLine("\nВведите номер нужной опции что бы продолжить: \n\n" +

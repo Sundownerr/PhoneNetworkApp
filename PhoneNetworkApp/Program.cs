@@ -22,7 +22,7 @@ namespace PhoneNetworkApp
             {
                 new RateSimple(),
                 new RateSuper100(),
-                new RateSimple(2, 10),
+                new RateSimple(20, 20),
                 new RateSuper100(51)
             };
 
@@ -43,7 +43,7 @@ namespace PhoneNetworkApp
           
             void CheckInput()
             {              
-                while (!int.TryParse(input, out result) || result < 1 || result > 4)
+                while (!int.TryParse(input, out result) || result < 1 || result > 5)
                 {
                     ShowMenu();
                     input = Console.ReadLine();
@@ -52,9 +52,10 @@ namespace PhoneNetworkApp
 
                 action = 
                     result == 1 ? ShowPersonList :
-                    result == 2 ? SearchByName :
-                    result == 3 ? SearchByPhoneNumber :
-                    result == 4 ? Exit : null as DelegateAction;
+                    result == 2 ? ShowRateList :
+                    result == 3 ? SearchByName :
+                    result == 4 ? SearchByPhoneNumber :
+                    result == 5 ? Exit : null as DelegateAction;
                 action?.Invoke();
                 action = null;            
             }
@@ -71,11 +72,17 @@ namespace PhoneNetworkApp
                 CheckInput();
             }
 
+            void ShowRateList()
+            {
+                for (int i = 0; i < rateList.Length; i++)
+                    rateList[i].DisplayInfo();
+                CheckInput();
+            }
+
             void SearchByName()
             {
                 Console.WriteLine("Введите часть имени или полное имя: ");
                 network.SearchBy(SearchType.ByName, Console.ReadLine());
-
                 CheckInput();
             }
 
@@ -83,7 +90,6 @@ namespace PhoneNetworkApp
             {           
                 Console.WriteLine("Введите часть номера или полный номер: ");
                 network.SearchBy(SearchType.ByPhoneNumber, Console.ReadLine());
-
                 CheckInput();
             }
 
@@ -91,9 +97,10 @@ namespace PhoneNetworkApp
             {         
                 Console.WriteLine("\nВведите номер нужной опции что бы продолжить: \n\n" +
                     " 1. Вывести информацию о всех абонентах \n" +
-                    " 2. Найти абонента по имени \n" +
-                    " 3. Найти абонента по номеру телефона \n" +
-                    " 4. Выход \n ");
+                    " 2. Вывести информацию о всех тарифах \n" +
+                    " 3. Найти абонента по имени \n" +
+                    " 4. Найти абонента по номеру телефона \n" +
+                    " 5. Выход \n ");
             }
         }
     }

@@ -26,6 +26,7 @@ namespace PhoneNetworkApp
         public void SearchBy(SearchType searchType, string parameter)
         {
             Console.WriteLine("\nРезультаты поиска: ");
+
             if (searchType == SearchType.ByName)
                 for (int i = 0; i < personList.Count; i++)
                     if (personList[i].FullName.Contains(parameter))

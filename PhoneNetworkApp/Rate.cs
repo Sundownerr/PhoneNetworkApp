@@ -16,7 +16,7 @@ namespace PhoneNetworkApp
 
         public Rate()
         {
-            dailyCost = new Random().Next(1, 10);
+            dailyCost = 10;
         }
 
         public Rate(int dailyCost)
@@ -26,7 +26,12 @@ namespace PhoneNetworkApp
 
         public virtual int CalculateMonthlyCost()
         {
-            return DailyCost * 30;
+            return dailyCost * 30;
+        }
+
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"{Name}, {CalculateMonthlyCost()}р. в месяц");
         }
     }
 }

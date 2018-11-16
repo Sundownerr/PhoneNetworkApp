@@ -12,22 +12,24 @@ namespace PhoneNetworkApp
 
         public float Discount { get => discount; set => discount = value; }
 
-        public RateSimple() : base()
-        {
+        public RateSimple() 
+        {           
+            dailyCost = 20;
+            discount = 0;
             name = $"Тариф 'Простой' без скидки";
-            dailyCost = 3;
         }
 
-        public RateSimple(int dailyCost, int discount) : base(dailyCost)
+        public RateSimple(int dailyCost, float discount) : base(dailyCost)
         {
-            name = $"Тариф 'Простой' со скидкой {discount}%";
-            dailyCost -= (dailyCost / 100 * discount);
+            this.discount = discount;       
+            dailyCost -= (int)(dailyCost / 100 * (discount));
+            name = $"Тариф 'Простой' со скидкой {discount}%";        
         }
 
         public override int CalculateMonthlyCost()
         {
             base.CalculateMonthlyCost();
-            return (int)(dailyCost / 100 * discount);
+            return discount > 0 ? (int)(dailyCost * 30 - dailyCost * 30 / 100 * (discount)) : dailyCost * 30;
         }
     }
 }

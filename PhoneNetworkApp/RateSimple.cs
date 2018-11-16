@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace PhoneNetworkApp
 {
-    class RateSimple
+    public class RateSimple : Rate
     {
+        public float discount;
+
+        public RateSimple() : base()
+        {
+            dailyCost -= (int)(dailyCost / 100 * discount);
+        }
+
+        public RateSimple(int dailyCost) : base(dailyCost)
+        {
+            dailyCost -= (int)(dailyCost / 100 * discount);
+        }
+
+        
     }
 }

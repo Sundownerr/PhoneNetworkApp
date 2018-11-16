@@ -9,8 +9,10 @@ namespace PhoneNetworkApp
     public abstract class Rate
     {
         protected int dailyCost;
+        protected string name;
 
         public int DailyCost { get => dailyCost; set => dailyCost = value; }
+        public string Name { get => name; set => name = value; }
 
         public Rate()
         {

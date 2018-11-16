@@ -8,18 +8,26 @@ namespace PhoneNetworkApp
 {
     public class RateSimple : Rate
     {
-        public float discount;
+        private float discount;
+
+        public float Discount { get => discount; set => discount = value; }
 
         public RateSimple() : base()
         {
-            dailyCost -= (int)(dailyCost / 100 * discount);
+            name = $"Тариф 'Простой' без скидки";
+            dailyCost = 3;
         }
 
-        public RateSimple(int dailyCost) : base(dailyCost)
+        public RateSimple(int dailyCost, int discount) : base(dailyCost)
         {
-            dailyCost -= (int)(dailyCost / 100 * discount);
+            name = $"Тариф 'Простой' со скидкой {discount}%";
+            dailyCost -= (dailyCost / 100 * discount);
         }
 
-        
+        public override int CalculateMonthlyCost()
+        {
+            base.CalculateMonthlyCost();
+            return (int)(dailyCost / 100 * discount);
+        }
     }
 }
